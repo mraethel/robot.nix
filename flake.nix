@@ -16,12 +16,17 @@
     nixpkgs,
     flake-utils,
     ...
-  }: {
-    robotnixConfigurations.grapheneos = import ./robotnixConfigurations/grapheneos.nix { inherit robotnix; };
+  }: rec {
+    robotnixModules.grapheneos = import robotnixModules/grapheneos { inherit robotnix; };
+    robotnixConfigurations.grapheneos = robotnix.robotnixConfigurations.base.extendModules {
+      modules = [ robotnixModules.grapheneos ];
+    };
+#   robotnixConfigurations.grapheneos = import robotnixModules/grapheneos { inherit robotnix; };
   } // flake-utils.lib.eachDefaultSystem (system: let
     pkgs = import nixpkgs { inherit system; };
   in {
     packages.grapheneos = self.robotnixConfigurations.grapheneos.img;
+    devShells.remote = pkgs.callPackage devShells/remote { };
   });
 
   nixConfig = {
