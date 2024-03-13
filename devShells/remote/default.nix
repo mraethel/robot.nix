@@ -1,7 +1,9 @@
 {
-  config,
-  mkShell
+  pem,
+  mkShell,
+  openssh
 }: mkShell {
-  name = "Open Telekom Cloud";
-  shellHook = "ssh -i ${ config.sops.secrets.pem.path } linux@164.30.24.90; exit";
+  name = "ssh-otc";
+  packages = [ openssh ];
+  shellHook = "ssh -i ${ pem.path } linux@164.30.24.90; exit";
 }

@@ -1,0 +1,7 @@
+keys:
+  - &tuxedo age17758fx8839c0274quq42k5kxdvn0rzpzzzhy2twagly7f58v7fesfvuzru
+creation_rules:
+  - path_regex: secrets/secrets.yaml
+    key_groups:
+      - age:
+        - *tuxedo
