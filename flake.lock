@@ -4,10 +4,7 @@
       "inputs": {
         "devshell": "devshell",
         "flake-utils": "flake-utils_3",
-        "nixpkgs": [
-          "robotnix",
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1712088965,
@@ -153,6 +150,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1712439257,
+        "narHash": "sha256-aSpiNepFOMk9932HOax0XwNxbA38GOUVOiXfUVPOrck=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ff0dbd94265ac470dda06a657d5fe49de93b4599",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1688392541,
         "narHash": "sha256-lHrKvEkCPTUO+7tPfjIcb7Trk6k31rz18vkyqmkeJfY=",
         "owner": "NixOS",
@@ -167,7 +180,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1712420723,
         "narHash": "sha256-VnG0Eu394Ga2FCe8Q66m6OEQF8iAqjDYsjmtl+N2omk=",
@@ -186,15 +199,15 @@
     "robotnix": {
       "inputs": {
         "androidPkgs": "androidPkgs",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgsUnstable": "nixpkgsUnstable"
       },
       "locked": {
-        "lastModified": 1712585514,
-        "narHash": "sha256-0XUZgmafz7YrKotPoSY7CMYOZaRFQkeMIoMVsM5kK4w=",
+        "lastModified": 1712588090,
+        "narHash": "sha256-wVv68ENK6U/KqfGJ09FE29wzoVg2jkqBo5aZ9cvuQfg=",
         "ref": "refs/heads/master",
-        "rev": "90242a37d80012f6d703f78d71ac12072d23298f",
-        "revCount": 1690,
+        "rev": "6eebf1fa4fe7c2421af0e7b1f616eff1a8b5e627",
+        "revCount": 1691,
         "type": "git",
         "url": "file:/home/sbmr/robotnix"
       },
@@ -214,7 +227,7 @@
     },
     "sops": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
