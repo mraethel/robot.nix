@@ -19,10 +19,10 @@
     ...
   }: rec {
     robotnixModules.grapheneos = import robotnixModules/grapheneos { inherit (inputs) robotnix; };
-    robotnixConfigurations.grapheneos = inputs.robotnix.robotnixConfigurations.base.extendModules {
-      modules = [ robotnixModules.grapheneos ];
-    };
-#   robotnixConfigurations.grapheneos = import robotnixModules/grapheneos { inherit robotnix; };
+#   robotnixConfigurations.grapheneos = inputs.robotnix.robotnixConfigurations.base.extendModules {
+#     modules = [ robotnixModules.grapheneos ];
+#   };
+    robotnixConfigurations.grapheneos = robotnixModules.grapheneos;
     nixosModules.sbmr = import nixosModules/sbmr;
     nixosConfigurations.sbmr = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
