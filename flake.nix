@@ -23,11 +23,16 @@
 #     modules = [ robotnixModules.grapheneos ];
 #   };
     robotnixConfigurations.grapheneos = robotnixModules.grapheneos;
-    nixosModules.sbmr = import nixosModules/sbmr;
+    nixosModules = {
+#     git = import nixosModules/git;
+      sbmr = import nixosModules/sbmr;
+#     sops = import nixosModules/sops;
+    };
     nixosConfigurations.sbmr = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = (with nixosModules; [
         sbmr
+#       sops
       ]) ++ (with inputs.sops.nixosModules; [
         sops
       ]);
@@ -37,13 +42,7 @@
     pkgs = import nixpkgs { inherit system; };
   in {
     packages.grapheneos = self.robotnixConfigurations.grapheneos.img;
-    devShells = {
-      sops-install-secrets = callPackage devShells/sops-install-secrets {
-        inherit (inputs.sops.packages.${ system }) sops-install-secrets;
-        inherit (self.nixosConfigurations.sbmr.config.system.build) sops-nix-manifest;
-      };
-      remote = callPackage devShells/remote { pem = self.nixosConfigurations.sbmr.config.sops.secrets."sbmr/pem"; };
-    };
+    devShells.remote = callPackage devShells/remote { pem = self.nixosConfigurations.sbmr.config.sops.secrets."sbmr/pem"; };
   });
 
   nixConfig = {
