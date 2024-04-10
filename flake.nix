@@ -24,15 +24,15 @@
 #   };
     robotnixConfigurations.grapheneos = robotnixModules.grapheneos;
     nixosModules = {
-#     git = import nixosModules/git;
+      git = import nixosModules/git;
       sbmr = import nixosModules/sbmr;
-#     sops = import nixosModules/sops;
+      sops = import nixosModules/sops;
     };
     nixosConfigurations.sbmr = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = (with nixosModules; [
         sbmr
-#       sops
+        sops
       ]) ++ (with inputs.sops.nixosModules; [
         sops
       ]);

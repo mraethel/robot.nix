@@ -11,7 +11,11 @@ in {
   sops = {
     age.sshKeyPaths = [ sshKey.path ];
     secrets."${ name }/pem" = {
-      sopsFile = ../../../secrets/secrets.yaml;
+      sopsFile = ../../secrets/secrets.yaml;
+      owner = name;
+    };
+    secrets."${ name }/pat" = {
+      sopsFile = ../../secrets/secrets.yaml;
       owner = name;
     };
   };
